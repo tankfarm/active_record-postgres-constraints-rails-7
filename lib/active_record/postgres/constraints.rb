@@ -4,7 +4,6 @@ module ActiveRecord
   module Postgres
     module Constraints
       CONSTRAINT_TYPES = {
-        check: 'c',
         exclude: 'x',
       }.freeze
 
@@ -28,6 +27,5 @@ require_relative 'constraints/railtie'
 require_relative 'constraints/schema_creation'
 require_relative 'constraints/schema_dumper'
 require_relative 'constraints/table_definition'
-require_relative 'constraints/types/check'
 require_relative 'constraints/types/exclude'
 require_relative 'constraints/version'
