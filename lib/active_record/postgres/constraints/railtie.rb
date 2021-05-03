@@ -20,7 +20,7 @@ if defined?(::Rails::Railtie)
             end
             AR_CAS::TableDefinition.include TableDefinition
             AR_CAS::PostgreSQLAdapter.include PostgreSQLAdapter
-            AR_CAS::AbstractAdapter::SchemaCreation.prepend SchemaCreation
+            AR_CAS::SchemaCreation.prepend SchemaCreation
 
             ::ActiveRecord::Migration::CommandRecorder.include CommandRecorder
             ::ActiveRecord::SchemaDumper.prepend SchemaDumper
