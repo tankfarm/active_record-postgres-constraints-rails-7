@@ -20,15 +20,15 @@ if defined?(::Rails::Railtie)
             end
             AR_CAS::TableDefinition.include TableDefinition
             AR_CAS::PostgreSQLAdapter.include PostgreSQLAdapter
-            AR_CAS::AbstractAdapter::SchemaCreation.prepend SchemaCreation
+            AR_CAS::SchemaCreation.prepend SchemaCreation
 
             ::ActiveRecord::Migration::CommandRecorder.include CommandRecorder
             ::ActiveRecord::SchemaDumper.prepend SchemaDumper
           end
 
           def pg?
-            config = ActiveRecord::Base.connection_config
-            return true if config && config[:adapter].in?(%w[postgresql postgis])
+            config = ActiveRecord::Base.connection_db_config
+            return true if config && config.adapter.in?(%w[postgresql postgis])
 
             Rails.logger.warn do
               'Not applying Postgres Constraints patches to ActiveRecord ' \
